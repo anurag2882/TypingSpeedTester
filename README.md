@@ -1,54 +1,69 @@
-================================================================
-   TYPING SPEED TESTER — HOW TO RUN
-================================================================
+# ⌨️ Typing Speed Tester
 
-REQUIREMENTS:
-  - Java JDK 8 or above installed on your computer
-  - To check: open Command Prompt and type: java -version
+A Java Swing desktop application that measures typing speed (WPM) and accuracy in real time, with a persistent results history.
 
-----------------------------------------------------------------
-METHOD 1 — Using Command Prompt (Recommended)
-----------------------------------------------------------------
+## Features
 
-Step 1: Open Command Prompt (cmd)
+- **Three difficulty levels** (Easy / Medium / Hard), each with its own bank of practice sentences
+- **Live timer** that starts automatically on your first keystroke
+- **Real-time WPM & accuracy calculation** once you hit Finish
+- **Color-coded accuracy feedback** (green / orange / red based on performance)
+- **Persistent history** — every result is saved to a local CSV file
+- **History viewer** — a dedicated dialog showing all past attempts in a table, plus your total test count and best WPM
+- **Restart flow** to immediately retry with a new sentence
+- Custom dark-themed UI built entirely with Java Swing (no external UI libraries)
 
-Step 2: Navigate to the project's src folder
-        cd path\to\TypingSpeedTester\src
+## Tech Stack
 
-Step 3: Compile all Java files
-        javac *.java
+- **Java** (core logic)
+- **Java Swing** (GUI — JFrame, JDialog, JTable, custom-styled components)
+- **File I/O** — CSV-based persistence, no external database
 
-Step 4: Run the program
-        java Main
+## Project Structure
 
-----------------------------------------------------------------
-METHOD 2 — Using an IDE (VS Code / IntelliJ / Eclipse)
-----------------------------------------------------------------
-
-1. Open your IDE
-2. Import/Open the TypingSpeedTester folder as a project
-3. Navigate to src/Main.java
-4. Right-click → "Run" or press the Run button
-
-----------------------------------------------------------------
-PROJECT FILE STRUCTURE
-----------------------------------------------------------------
-
+```
 TypingSpeedTester/
 │
 ├── src/
 │   ├── Main.java            ← Entry point (run this)
-│   ├── TypingSpeedUI.java   ← Main UI window
-│   ├── TypingLogic.java     ← WPM & accuracy calculations
-│   ├── FileHandler.java     ← File save/read operations
-│   └── ResultsViewer.java   ← Past results popup
+│   ├── TypingSpeedUI.java   ← Main application window & UI logic
+│   ├── TypingLogic.java     ← Sentence selection, WPM & accuracy calculations
+│   ├── FileHandler.java     ← Saves/reads results to/from typing_results.csv
+│   └── ResultsViewer.java   ← Popup dialog showing past results & stats
 │
-├── PROJECT_REPORT.txt       ← Full project report
-├── VIVA_QA.txt              ← Viva questions & answers
-└── README.txt               ← This file
+├── typing_results.csv       ← Auto-generated results log (created on first run)
+└── README.md
+```
 
-After running, a file called "typing_results.csv" will be
-created automatically in the same folder where you run the
-program. This file stores all your test results.
+## How It Works
 
-================================================================
+1. Choose a difficulty level (Easy, Medium, or Hard) from the dropdown.
+2. Click **Start** — a random sentence is loaded for that difficulty.
+3. Start typing in the input box; the timer begins on your first keystroke.
+4. Click **Finish** to stop the timer and see your WPM, accuracy, and time taken.
+5. Your result is automatically appended to `typing_results.csv`.
+6. Click **History** at any time to view all past attempts, along with your total test count and personal best WPM.
+7. Click **Restart** to try again with a new sentence.
+
+## Requirements
+
+- Java JDK 8 or above
+- Check your version: `java -version`
+
+## Running the Project
+
+**Using Command Prompt / Terminal:**
+```bash
+cd path/to/TypingSpeedTester/src
+javac *.java
+java Main
+```
+
+**Using an IDE (VS Code / IntelliJ / Eclipse):**
+1. Open/import the `TypingSpeedTester` folder as a project.
+2. Navigate to `src/Main.java`.
+3. Run the file directly.
+
+## Author
+
+Anurag Mishra
